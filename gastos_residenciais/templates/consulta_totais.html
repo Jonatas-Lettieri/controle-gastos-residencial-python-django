@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Total de Receitas, Despesas e Saldo</h2>
+<ul>
+    <li>Total de Receitas: R$ {{ total_receitas }}</li>
+    <li>Total de Despesas: R$ {{ total_despesas }}</li>
+    <li>Saldo Líquido: R$ {{ saldo }}</li>
+</ul>
+{% endblock %}

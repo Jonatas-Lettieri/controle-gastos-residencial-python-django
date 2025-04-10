@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Usuários Cadastrados</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Identificador</th>
+            <th>Email</th>
+            <th>Receitas</th>
+            <th>Despesas</th>
+            <th>Saldo</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for usuario in usuarios %}
+        <tr>
+            <td>{{ usuario.nome }}</td>
+            <td>{{ usuario.identificador }}</td>
+            <td>{{ usuario.email }}</td>
+            <td>{{ usuario.total_receitas }}</td>
+            <td>{{ usuario.total_despesas }}</td>
+            <td>{{ usuario.saldo }}</td>
+            <td>
+                <a href="{% url 'editar_usuario' usuario.id %}" class="btn btn-warning">Editar</a>
+                <a href="{% url 'excluir_usuario' usuario.id %}" class="btn btn-danger">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

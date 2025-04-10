@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Confirmar Exclusão</h2>
+<p>Tem certeza de que deseja excluir o usuário {{ usuario.nome }}?</p>
+<form method="post" autocomplete="off">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Excluir</button>
+    <a href="{% url 'usuarios_cadastrados' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Cadastro de Transação</h2>
+<form method="post" autocomplete="off">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Registrar Transação</button>
+</form>
+{% endblock %}

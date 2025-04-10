@@ -1,0 +1,4 @@
+Django>=4.2,<5
+psycopg2
+
+# Para o python eu utilizei a versão 3.10.12, mas pode utilizar versôes lts acima dessa versão também!

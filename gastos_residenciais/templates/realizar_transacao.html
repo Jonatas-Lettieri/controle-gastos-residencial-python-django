@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Realizar Transação</h2>
+
+<!-- Exibe as mensagens de erro ou sucesso -->
+{% if messages %}
+    <div class="alert alert-danger mt-3" role="alert">
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    </div>
+{% endif %}
+
+<!-- Exibindo o saldo atual (para um futuro upgrade, pois seria útil para o usuário) -->
+{% if usuario %}
+    <div class="alert alert-info">
+        <strong>Seu saldo atual é:</strong> R${{ saldo_atual|floatformat:2 }}
+    </div>
+{% endif %}
+
+<form method="POST" autocomplete="off">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="tipo">Tipo da Transação:</label>
+        <select name="tipo" class="form-control" required>
+            <option value="despesa">Despesa</option>
+            <option value="transferencia">Transferência</option>
+            <option value="receita">Receita</option>  <!-- Adicionado para incluir a receita -->
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="valor">Valor:</label>
+        <input type="number" step="0.01" name="valor" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="descricao">Descrição (opcional):</label>
+        <input type="text" name="descricao" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Realizar Transação</button>
+</form>
+{% endblock %}
